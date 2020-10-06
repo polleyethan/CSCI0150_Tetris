@@ -1,0 +1,39 @@
+Tetris README
+Handin: On-Time
+Containment: TetrisContainment.pdf
+
+Overview:
+	- Single Player
+		- Game Organizer organizes the panes and creates buttons
+		- Game class organizes all interactions between items
+		- Game contains array list of squares to keep track of placed objects
+		- TetrisPiece contains array list of squares to keep track of its own squares
+		- PieceShape enum has array list of intoffsets which create squares and add them to a TetrisPiece's TetrisSquare array list when that piece is created
+	- Multi Player
+		- Creates two instances of MultiPlayer individual organizers and shows them side by side, along with the main stage, which shows game info and buttons
+	- Watch AI Play
+		- A preset AIGenome controls the moves made in the game and simulates the game at a fast speed
+	- Train AI
+		- AI simulates thousands of games and chooses which AIWeights helps it make the best decisions regarding what moves to make
+		- AI generation contains genomes
+		- each AIGenome uses different AIWeights to determine which move is the best move for every single new piece added to the game. The AIGenome assigns scores to each move depending on the resulting bumpiness, number of holes, aggregate height, and tallest height of the board. The move with the highest score is made and then the AIGenome  resimulates the moves for the next piece.
+		- After a generation has simulated all of its genomes games, it chooses the top half and reproduces children genomes from the top half to produce new combinations of aiweights. These children genomes make up a new generation and the same process happens again.
+		- All train data is displayed in the console, rather than on screen, because there was too much data to be displayed in a Text, Label, or even a TextArea JavaFX object
+
+
+
+Design Choices:
+	- I had to use both an array list of squares and a 2d array of occupied spaces in my game class in order to accommodate my AI learning algorithm
+
+
+Known Bugs:
+	- Single Player doesn't have buttons
+	- UI is not great
+
+
+Extra Credit:
+	- Genetic AI Algorithm
+	- Watch AI play Mode
+	- MultiPlayer
+	- Play versus AI
+	- Keeping score
